@@ -60,6 +60,19 @@ section { scroll-margin-top:24px; }
 /* 4. download as a clear, same-size control */
 .download { font-size:1rem; text-decoration:none; border:1px solid var(--accent); border-radius:6px; padding:6px 14px; margin-top:14px; }
 .download:hover { background:var(--accent); color:var(--bg); }
+/* more room: sections, entries, bullets (Dominik 2026-10-20) */
+h2 { margin:56px 0 22px; }
+.entry { margin-bottom:40px; }
+.entry:last-child { margin-bottom:0; }
+li { margin:10px 0; }
+ul { margin-top:10px; }
+.rows { gap:18px 20px; }
+/* company details: separators between parts, never dangling */
+.meta .p + .p::before { content:" | "; }
+@media (max-width:640px) {
+  .rows { gap:2px; } .rows dd { margin-bottom:16px; }
+  .meta .p { display:block; } .meta .p + .p::before { content:none; }
+}
 </style>
 </head>
 <body>
@@ -78,7 +91,7 @@ section { scroll-margin-top:24px; }
     <div class="when">2024 – 2026</div>
     <div class="what">
       <h3>Ominimo Insurance</h3>
-      <div class="meta">$1.6B Insurtech startup, McKinsey founders | Budapest, Hungary</div>
+      <div class="meta"><span class="p">$1.6B Insurtech startup, McKinsey founders</span><span class="p">Budapest, Hungary</span></div>
       <p class="title">Business Generalist (early-hire)</p>
       <ul>
         <li>Owned initiatives end to end across product, operations, data and commercial – scoping, prioritisation, solution design, coordinating engineers &amp; operations teams, and shipping</li>
@@ -99,7 +112,7 @@ section { scroll-margin-top:24px; }
     <div class="when">2022 – 2023</div>
     <div class="what">
       <h3>Consulting Projects, Part-time</h3>
-      <div class="meta">London, United Kingdom</div>
+      <div class="meta"><span class="p">London, United Kingdom</span></div>
       <ul>
         <li>Project lead - growth strategy for food delivery startup; Consultant - B2C GTM strategy for fashion brand</li>
       </ul>
@@ -110,7 +123,7 @@ section { scroll-margin-top:24px; }
     <div class="when">2021 – 2022</div>
     <div class="what">
       <h3>Invescom Corporate Finance</h3>
-      <div class="meta">Budapest, Hungary</div>
+      <div class="meta"><span class="p">Budapest, Hungary</span></div>
       <p class="title">Analyst &amp; Intern, Investment Banking (Mergers &amp; Acquisitions)</p>
       <ul>
         <li>Performed in-depth analyses on 10+ client companies - covering market dynamics, financials, competitive landscape, and strategy - and synthesised findings into deal materials and investment presentations for prospective buyers</li>
@@ -122,7 +135,7 @@ section { scroll-margin-top:24px; }
     <div class="when">2022 – 2023</div>
     <div class="what">
       <h3>London Business School</h3>
-      <div class="meta">London, United Kingdom</div>
+      <div class="meta"><span class="p">London, United Kingdom</span></div>
       <p class="title">Master’s in Management</p>
     </div>
   </div>
@@ -131,7 +144,7 @@ section { scroll-margin-top:24px; }
     <div class="when">2018 – 2022</div>
     <div class="what">
       <h3>Corvinus University of Budapest</h3>
-      <div class="meta">Budapest, Hungary</div>
+      <div class="meta"><span class="p">Budapest, Hungary</span></div>
       <p class="title">BSc in Economics, Grade: 1st Class | Focus: Statistics &amp; Data Science</p>
       <p class="note">Academic Scholarship (top 5% academic performance), Teaching Assistant - Faculty of Statistics</p>
     </div>
