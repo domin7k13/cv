@@ -145,7 +145,13 @@ section { scroll-margin-top:24px; }
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
   var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var picked = null;
+  links.forEach(function (a, i) { a.addEventListener('click', function () { picked = i; update(); }); });
+  ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { picked = null; }, { passive: true });
+  });
   function update() {
+    if (picked !== null) { links.forEach(function (a, i) { a.classList.toggle('on', i === picked); }); return; }
     var y = window.scrollY + window.innerHeight * 0.3, cur = 0;
     secs.forEach(function (s, i) { if (s.offsetTop <= y) cur = i; });
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) cur = secs.length - 1;
