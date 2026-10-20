@@ -7,109 +7,93 @@
 <title>Dominik Czirjak - CV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f3f2ee; --card: #ffffff; --text: #1c1c1a; --muted: #66655f;
-    --line: #e4e2dc; --accent: #1f4e79; --accent-soft: #e8eff6; --accent-text: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #141413; --card: #1d1d1b; --text: #ecebe6; --muted: #a09f98;
-      --line: #32312d; --accent: #8db8e0; --accent-soft: #1f2a35; --accent-text: #0f1d2b;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 15.5px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--accent); }
-  .page {
-    max-width: 860px; margin: 40px auto; background: var(--card);
-    border: 1px solid var(--line); border-radius: 14px; padding: 48px 56px;
-  }
+:root { --bg:#ffffff; --text:#111; --muted:#555; --rule:#111; --accent:#1a56a0; }
+@media (prefers-color-scheme: dark) { :root { --bg:#151515; --text:#eaeaea; --muted:#aaa; --rule:#777; --accent:#8ab8f0; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 Arial, Helvetica, sans-serif; }
+a { color:var(--accent); }
+.page { max-width:860px; margin:0 auto; padding:56px 24px 72px; }
+header { text-align:center; }
+h1 { margin:0; font-size:1.75rem; font-weight:700; }
+.role { margin:4px 0 0; font-weight:700; }
+.role .t { display:none; }
+.download { display:inline-block; margin-top:12px; font-size:.9rem; color:var(--accent); }
+.download svg { width:14px; height:14px; vertical-align:-2px; margin-right:4px; }
+.summary { margin:26px 0 0; font-style:italic; }
+h2 { margin:36px 0 16px; padding-bottom:4px; border-bottom:1.5px solid var(--rule); font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:.02em; }
+.entry { display:grid; grid-template-columns:120px 1fr; gap:0 20px; margin-bottom:26px; }
+.when { font-weight:700; }
+.what h3 { display:inline; margin:0; font-size:1rem; font-weight:700; }
+.meta { display:inline; font-weight:700; }
+.meta::before { content:" | "; }
+.title { margin:0; font-weight:700; }
+.note { margin:0; font-style:italic; }
+ul { margin:6px 0 0; padding-left:20px; } li { margin:6px 0; }
+.rows { display:grid; grid-template-columns:120px 1fr; gap:14px 20px; margin:0; }
+.rows dt { font-weight:700; } .rows dd { margin:0; }
+@media (max-width:640px) {
+  body { font-size:16px; } .page { padding:32px 16px 48px; }
+  .entry, .rows { grid-template-columns:1fr; } .rows { gap:2px; } .rows dd { margin-bottom:12px; }
+  .what h3, .meta { display:block; } .meta { font-weight:400; color:var(--muted); } .meta::before { content:none; }
+}
+html { scroll-behavior:smooth; }
+section { scroll-margin-top:24px; }
+.toc { display:none; }
+@media (min-width:1100px) {
+  .layout { display:grid; grid-template-columns:170px minmax(0, 860px) 170px; justify-content:center; }
+  .toc { display:block; position:sticky; top:0; align-self:start; padding:120px 0 0 8px; }
+  .toc a { display:block; padding:6px 0 6px 14px; border-left:2px solid transparent; color:var(--muted); text-decoration:none; font-size:.92rem; }
+  .toc a:hover { color:var(--text); }
+  .toc a.on { color:var(--text); font-weight:700; border-left-color:var(--text); }
+  .page { margin:0; }
+}
+@media print { .download, .toc { display:none; } }
 
-  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
-  h1 { margin: 0; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
-  .role { margin: 6px 0 0; color: var(--muted); font-weight: 500; }
-  .role a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
-  .role a:hover { color: var(--accent); }
-  .download {
-    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
-    background: var(--accent); color: var(--accent-text); border-radius: 8px;
-    text-decoration: none; font-weight: 600; font-size: 0.92rem; white-space: nowrap;
-  }
-  .download:hover { filter: brightness(1.08); }
-  .download svg { width: 16px; height: 16px; }
-
-  .summary {
-    margin: 28px 0 8px; padding: 18px 20px; background: var(--accent-soft);
-    border-radius: 10px; font-size: 1.02rem;
-  }
-
-  h2 {
-    margin: 40px 0 16px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent);
-    display: flex; align-items: center; gap: 12px;
-  }
-  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-
-  .entry { display: grid; grid-template-columns: 120px 1fr; gap: 4px 24px; margin-bottom: 26px; }
-  .entry:last-child { margin-bottom: 0; }
-  .when { color: var(--muted); font-size: 0.88rem; font-weight: 500; padding-top: 2px; font-variant-numeric: tabular-nums; }
-  .what h3 { margin: 0; font-size: 1.02rem; font-weight: 600; }
-  .meta { color: var(--muted); font-size: 0.9rem; }
-  .title { margin: 2px 0 0; font-weight: 500; }
-  .note { margin: 2px 0 0; font-size: 0.92rem; color: var(--muted); font-style: italic; }
-  ul { margin: 10px 0 0; padding-left: 18px; }
-  li { margin: 6px 0; }
-  li::marker { color: var(--accent); }
-
-  .rows { display: grid; grid-template-columns: 120px 1fr; gap: 12px 24px; }
-  .rows dt { font-weight: 600; }
-  .rows dd { margin: 0; }
-
-  footer { max-width: 860px; margin: -24px auto 40px; padding: 0 16px; text-align: center; color: var(--muted); font-size: 0.85rem; }
-
-  @media (max-width: 680px) {
-    .page { margin: 0; border: 0; border-radius: 0; padding: 28px 16px 36px; }
-    h1 { font-size: 1.65rem; }
-    .entry, .rows { grid-template-columns: 1fr; }
-    .rows { gap: 2px; }
-    .rows dd { margin-bottom: 12px; }
-    footer { margin: 0 auto 28px; }
-  }
-  @media print {
-    body { background: #fff; }
-    .page { border: 0; margin: 0; padding: 0; }
-    .download, footer { display: none; }
-  }
+/* 1. one bold item per entry: the company / school name */
+.when { font-weight:400; color:var(--muted); }
+.meta { font-weight:400; color:var(--muted); }
+.title { font-weight:400; }
+/* 3. summary as plain text */
+.summary { font-style:normal; font-size:1.06rem; }
+/* 4. download as a clear, same-size control */
+.download { font-size:1rem; text-decoration:none; border:1px solid var(--accent); border-radius:6px; padding:6px 14px; margin-top:14px; }
+.download:hover { background:var(--accent); color:var(--bg); }
+/* more room: sections, entries, bullets (Dominik 2026-10-20) */
+h2 { margin:56px 0 22px; }
+section:first-of-type h2 { margin-top:36px; }
+@media (min-width:1100px) { .toc { padding-top:0 !important; top:40px; } }
+.entry { margin-bottom:40px; }
+.entry:last-child { margin-bottom:0; }
+li { margin:10px 0; }
+ul { margin-top:10px; }
+.rows { gap:18px 20px; }
+/* company details: separators between parts, never dangling */
+.meta .p + .p::before { content:" | "; }
+@media (max-width:640px) {
+  .rows { gap:2px; } .rows dd { margin-bottom:16px; }
+  .meta .p { display:block; } .meta .p + .p::before { content:none; }
+}
 </style>
 </head>
 <body>
-<main class="page">
-  <header>
+<div class="layout"><nav class="toc" aria-label="Sections"><a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#skills">Skills</a></nav><main class="page"><header>
     <div>
       <h1>Dominik Czirjak</h1>
-      <p class="role">Business Generalist &middot; <a href="https://www.linkedin.com/in/czirjak">linkedin.com/in/czirjak</a></p>
+      <p class="role"><span class="t">Business Generalist | </span><a href="https://www.linkedin.com/in/czirjak">linkedin.com/in/czirjak</a></p>
     </div>
     <a class="download" href="Dominik_Czirjak_CV.pdf" download>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
       Download PDF
     </a>
-  </header>
-
-  <p class="summary">Generalist with 1.5+ years at an insurtech unicorn working with leadership, and 1 year in M&amp;A. Worked across BizOps, product and partner management, often taking on work that had no owner: making the calls, finding the right people and seeing it through.</p>
-
-  <h2>Professional experience</h2>
+  </header><p class="summary">Generalist with 1.5+ years at an insurtech unicorn working with leadership, and 1 year in M&amp;A. Worked across BizOps, product and partner management, often taking on work that had no owner: making the calls, finding the right people and seeing it through.</p><section id="experience"><h2>Professional experience</h2>
 
   <div class="entry">
     <div class="when">2024 – 2026</div>
     <div class="what">
       <h3>Ominimo Insurance</h3>
-      <div class="meta">$1.6B Insurtech startup, McKinsey founders &middot; Budapest, Hungary</div>
+      <div class="meta"><span class="p">$1.6B Insurtech startup, McKinsey founders</span><span class="p">Budapest, Hungary</span></div>
       <p class="title">Business Generalist (early-hire)</p>
       <ul>
         <li>Owned initiatives end to end across product, operations, data and commercial – scoping, prioritisation, solution design, coordinating engineers &amp; operations teams, and shipping</li>
@@ -130,7 +114,7 @@
     <div class="when">2022 – 2023</div>
     <div class="what">
       <h3>Consulting Projects, Part-time</h3>
-      <div class="meta">London, United Kingdom</div>
+      <div class="meta"><span class="p">London, United Kingdom</span></div>
       <ul>
         <li>Project lead - growth strategy for food delivery startup; Consultant - B2C GTM strategy for fashion brand</li>
       </ul>
@@ -141,21 +125,19 @@
     <div class="when">2021 – 2022</div>
     <div class="what">
       <h3>Invescom Corporate Finance</h3>
-      <div class="meta">Budapest, Hungary</div>
+      <div class="meta"><span class="p">Budapest, Hungary</span></div>
       <p class="title">Analyst &amp; Intern, Investment Banking (Mergers &amp; Acquisitions)</p>
       <ul>
         <li>Performed in-depth analyses on 10+ client companies - covering market dynamics, financials, competitive landscape, and strategy - and synthesised findings into deal materials and investment presentations for prospective buyers</li>
       </ul>
     </div>
-  </div>
-
-  <h2>Education</h2>
+  </div></section><section id="education"><h2>Education</h2>
 
   <div class="entry">
     <div class="when">2022 – 2023</div>
     <div class="what">
       <h3>London Business School</h3>
-      <div class="meta">London, United Kingdom</div>
+      <div class="meta"><span class="p">London, United Kingdom</span></div>
       <p class="title">Master’s in Management</p>
     </div>
   </div>
@@ -164,13 +146,11 @@
     <div class="when">2018 – 2022</div>
     <div class="what">
       <h3>Corvinus University of Budapest</h3>
-      <div class="meta">Budapest, Hungary</div>
-      <p class="title">BSc in Economics, Grade: 1st Class &middot; Focus: Statistics &amp; Data Science</p>
+      <div class="meta"><span class="p">Budapest, Hungary</span></div>
+      <p class="title">BSc in Economics, Grade: 1st Class | Focus: Statistics &amp; Data Science</p>
       <p class="note">Academic Scholarship (top 5% academic performance), Teaching Assistant - Faculty of Statistics</p>
     </div>
-  </div>
-
-  <h2>Projects</h2>
+  </div></section><section id="projects"><h2>Projects</h2>
 
   <dl class="rows">
     <dt>Job pipeline</dt>
@@ -179,17 +159,37 @@
     <dd>Two dictation-based Gemini API tools: a spreadsheet for health/habit analysis, and brain dumps split into organised lists to come back to later</dd>
     <dt>Movie finder</dt>
     <dd>Helps decide what to watch tonight: all streaming services in Hungary, filterable, sortable<br><a href="https://domin7k13.github.io/movies">domin7k13.github.io/movies</a></dd>
-  </dl>
-
-  <h2>Skills, additional information</h2>
+  </dl></section><section id="skills"><h2>Skills, additional information</h2>
 
   <dl class="rows">
     <dt>Toolkit</dt>
     <dd>AI &amp; automation (Claude Code, APIs, Make.com, Google Apps Script), SQL, Kibana (operational dashboards), YouTrack (Jira equivalent), Notion, Excel &amp; Google Sheets, PowerPoint</dd>
     <dt>Languages</dt>
     <dd>English (bilingual, C2), Hungarian (native)</dd>
-  </dl>
-</main>
-<footer><a href="Dominik_Czirjak_CV.pdf" download>Download as PDF</a></footer>
+  </dl></section></main></div><script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var picked = null;
+  links.forEach(function (a, i) { a.addEventListener('click', function () { picked = i; update(); }); });
+  ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { picked = null; }, { passive: true });
+  });
+  function update() {
+    if (picked !== null) { links.forEach(function (a, i) { a.classList.toggle('on', i === picked); }); return; }
+    var y = window.scrollY + window.innerHeight * 0.3, cur = 0;
+    secs.forEach(function (s, i) { if (s.offsetTop <= y) cur = i; });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) cur = secs.length - 1;
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  function align() {
+    var toc = document.querySelector('.toc'), h = document.querySelector('h2');
+    toc.style.marginTop = (h.getBoundingClientRect().top + window.scrollY - 6) + 'px';
+  }
+  align(); window.addEventListener('resize', align);
+})();
+</script>
 </body>
 </html>
