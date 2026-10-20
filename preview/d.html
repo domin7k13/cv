@@ -38,11 +38,22 @@ ul { margin:6px 0 0; padding-left:20px; } li { margin:6px 0; }
   .entry, .rows { grid-template-columns:1fr; } .rows { gap:2px; } .rows dd { margin-bottom:12px; }
   .what h3, .meta { display:block; } .meta { font-weight:400; color:var(--muted); } .meta::before { content:none; }
 }
-@media print { .download { display:none; } }
+html { scroll-behavior:smooth; }
+section { scroll-margin-top:24px; }
+.toc { display:none; }
+@media (min-width:1100px) {
+  .layout { display:grid; grid-template-columns:170px minmax(0, 860px) 170px; justify-content:center; }
+  .toc { display:block; position:sticky; top:0; align-self:start; padding:120px 0 0 8px; }
+  .toc a { display:block; padding:6px 0 6px 14px; border-left:2px solid transparent; color:var(--muted); text-decoration:none; font-size:.92rem; }
+  .toc a:hover { color:var(--text); }
+  .toc a.on { color:var(--text); font-weight:700; border-left-color:var(--text); }
+  .page { margin:0; }
+}
+@media print { .download, .toc { display:none; } }
 </style>
 </head>
 <body>
-<main class="page"><header>
+<div class="layout"><nav class="toc" aria-label="Sections"><a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#skills">Skills</a></nav><main class="page"><header>
     <div>
       <h1>Dominik Czirjak</h1>
       <p class="role"><span class="t">Business Generalist | </span><a href="https://www.linkedin.com/in/czirjak">linkedin.com/in/czirjak</a></p>
@@ -51,7 +62,7 @@ ul { margin:6px 0 0; padding-left:20px; } li { margin:6px 0; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
       Download PDF
     </a>
-  </header><p class="summary">Generalist with 1.5+ years at an insurtech unicorn working with leadership, and 1 year in M&amp;A. Worked across BizOps, product and partner management, often taking on work that had no owner: making the calls, finding the right people and seeing it through.</p><section><h2>Professional experience</h2>
+  </header><p class="summary">Generalist with 1.5+ years at an insurtech unicorn working with leadership, and 1 year in M&amp;A. Worked across BizOps, product and partner management, often taking on work that had no owner: making the calls, finding the right people and seeing it through.</p><section id="experience"><h2>Professional experience</h2>
 
   <div class="entry">
     <div class="when">2024 – 2026</div>
@@ -95,7 +106,7 @@ ul { margin:6px 0 0; padding-left:20px; } li { margin:6px 0; }
         <li>Performed in-depth analyses on 10+ client companies - covering market dynamics, financials, competitive landscape, and strategy - and synthesised findings into deal materials and investment presentations for prospective buyers</li>
       </ul>
     </div>
-  </div></section><section><h2>Education</h2>
+  </div></section><section id="education"><h2>Education</h2>
 
   <div class="entry">
     <div class="when">2022 – 2023</div>
@@ -114,7 +125,7 @@ ul { margin:6px 0 0; padding-left:20px; } li { margin:6px 0; }
       <p class="title">BSc in Economics, Grade: 1st Class | Focus: Statistics &amp; Data Science</p>
       <p class="note">Academic Scholarship (top 5% academic performance), Teaching Assistant - Faculty of Statistics</p>
     </div>
-  </div></section><section><h2>Projects</h2>
+  </div></section><section id="projects"><h2>Projects</h2>
 
   <dl class="rows">
     <dt>Job pipeline</dt>
@@ -123,13 +134,26 @@ ul { margin:6px 0 0; padding-left:20px; } li { margin:6px 0; }
     <dd>Two dictation-based Gemini API tools: a spreadsheet for health/habit analysis, and brain dumps split into organised lists to come back to later</dd>
     <dt>Movie finder</dt>
     <dd>Helps decide what to watch tonight: all streaming services in Hungary, filterable, sortable<br><a href="https://domin7k13.github.io/movies">domin7k13.github.io/movies</a></dd>
-  </dl></section><section><h2>Skills, additional information</h2>
+  </dl></section><section id="skills"><h2>Skills, additional information</h2>
 
   <dl class="rows">
     <dt>Toolkit</dt>
     <dd>AI &amp; automation (Claude Code, APIs, Make.com, Google Apps Script), SQL, Kibana (operational dashboards), YouTrack (Jira equivalent), Notion, Excel &amp; Google Sheets, PowerPoint</dd>
     <dt>Languages</dt>
     <dd>English (bilingual, C2), Hungarian (native)</dd>
-  </dl></section></main>
+  </dl></section></main></div><script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function update() {
+    var y = window.scrollY + window.innerHeight * 0.3, cur = 0;
+    secs.forEach(function (s, i) { if (s.offsetTop <= y) cur = i; });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) cur = secs.length - 1;
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
