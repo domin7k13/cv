@@ -5,68 +5,191 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>Dominik Czirjak - CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f5f2; --card: #ffffff; --text: #1d1d1b; --muted: #5f5f5a;
-    --line: #e2e0da; --accent: #1f4e79; --accent-text: #ffffff;
+    --bg: #f3f2ee; --card: #ffffff; --text: #1c1c1a; --muted: #66655f;
+    --line: #e4e2dc; --accent: #1f4e79; --accent-soft: #e8eff6; --accent-text: #ffffff;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #161615; --card: #20201e; --text: #ecebe6; --muted: #a3a29b;
-      --line: #34332f; --accent: #8db8e0; --accent-text: #10202f;
+      --bg: #141413; --card: #1d1d1b; --text: #ecebe6; --muted: #a09f98;
+      --line: #32312d; --accent: #8db8e0; --accent-soft: #1f2a35; --accent-text: #0f1d2b;
     }
   }
   * { box-sizing: border-box; }
   body {
     margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font: 15.5px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 48px; }
-  header {
-    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
-    justify-content: space-between; margin-bottom: 20px;
+  a { color: var(--accent); }
+  .page {
+    max-width: 860px; margin: 40px auto; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px; padding: 48px 56px;
   }
-  h1 { margin: 0; font-size: 1.6rem; letter-spacing: -0.01em; }
-  .sub { margin: 2px 0 0; color: var(--muted); }
-  .sub a { color: inherit; }
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn {
-    display: inline-block; padding: 10px 18px; border-radius: 8px;
-    text-decoration: none; font-weight: 600; border: 1px solid var(--accent);
+
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+  .role { margin: 6px 0 0; color: var(--muted); font-weight: 500; }
+  .role a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  .role a:hover { color: var(--accent); }
+  .download {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
+    background: var(--accent); color: var(--accent-text); border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 0.92rem; white-space: nowrap;
   }
-  .btn.primary { background: var(--accent); color: var(--accent-text); }
-  .btn.ghost { color: var(--accent); }
-  .viewer {
-    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    overflow: hidden; height: min(1200px, 130vw); min-height: 520px;
+  .download:hover { filter: brightness(1.08); }
+  .download svg { width: 16px; height: 16px; }
+
+  .summary {
+    margin: 28px 0 8px; padding: 18px 20px; background: var(--accent-soft);
+    border-radius: 10px; font-size: 1.02rem;
   }
-  .viewer object { width: 100%; height: 100%; display: block; border: 0; }
-  .fallback { padding: 24px; color: var(--muted); }
-  @media (max-width: 640px) {
-    .viewer { display: none; }
-    .mobile-note { display: block; }
+
+  h2 {
+    margin: 40px 0 16px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 12px;
   }
-  .mobile-note { display: none; color: var(--muted); margin-top: 8px; }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  .entry { display: grid; grid-template-columns: 120px 1fr; gap: 4px 24px; margin-bottom: 26px; }
+  .entry:last-child { margin-bottom: 0; }
+  .when { color: var(--muted); font-size: 0.88rem; font-weight: 500; padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .what h3 { margin: 0; font-size: 1.02rem; font-weight: 600; }
+  .meta { color: var(--muted); font-size: 0.9rem; }
+  .title { margin: 2px 0 0; font-weight: 500; }
+  .note { margin: 2px 0 0; font-size: 0.92rem; color: var(--muted); font-style: italic; }
+  ul { margin: 10px 0 0; padding-left: 18px; }
+  li { margin: 6px 0; }
+  li::marker { color: var(--accent); }
+
+  .rows { display: grid; grid-template-columns: 120px 1fr; gap: 12px 24px; }
+  .rows dt { font-weight: 600; }
+  .rows dd { margin: 0; }
+
+  footer { max-width: 860px; margin: -24px auto 40px; padding: 0 16px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+  @media (max-width: 680px) {
+    .page { margin: 0; border: 0; border-radius: 0; padding: 28px 16px 36px; }
+    h1 { font-size: 1.65rem; }
+    .entry, .rows { grid-template-columns: 1fr; }
+    .rows { gap: 2px; }
+    .rows dd { margin-bottom: 12px; }
+    footer { margin: 0 auto 28px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .page { border: 0; margin: 0; padding: 0; }
+    .download, footer { display: none; }
+  }
 </style>
 </head>
 <body>
-<main>
+<main class="page">
   <header>
     <div>
       <h1>Dominik Czirjak</h1>
-      <p class="sub">Business Generalist &middot; <a href="https://www.linkedin.com/in/czirjak">linkedin.com/in/czirjak</a></p>
+      <p class="role">Business Generalist &middot; <a href="https://www.linkedin.com/in/czirjak">linkedin.com/in/czirjak</a></p>
     </div>
-    <div class="actions">
-      <a class="btn primary" href="Dominik_Czirjak_CV.pdf" download>Download CV (PDF)</a>
-      <a class="btn ghost" href="Dominik_Czirjak_CV.pdf" target="_blank" rel="noopener">Open in new tab</a>
-    </div>
+    <a class="download" href="Dominik_Czirjak_CV.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </a>
   </header>
-  <div class="viewer">
-    <object data="Dominik_Czirjak_CV.pdf#view=FitH" type="application/pdf">
-      <p class="fallback">Your browser can't show the PDF here. Use the download button above.</p>
-    </object>
+
+  <p class="summary">Generalist with 1.5+ years at an insurtech unicorn working with leadership, and 1 year in M&amp;A. Worked across BizOps, product and partner management, often taking on work that had no owner: making the calls, finding the right people and seeing it through.</p>
+
+  <h2>Professional experience</h2>
+
+  <div class="entry">
+    <div class="when">2024 – 2026</div>
+    <div class="what">
+      <h3>Ominimo Insurance</h3>
+      <div class="meta">$1.6B Insurtech startup, McKinsey founders &middot; Budapest, Hungary</div>
+      <p class="title">Business Generalist (early-hire)</p>
+      <ul>
+        <li>Owned initiatives end to end across product, operations, data and commercial – scoping, prioritisation, solution design, coordinating engineers &amp; operations teams, and shipping</li>
+        <li>Main point of contact for Signal Iduna, the insurance partner the whole business ran on, from licensing and operations to approving launches</li>
+        <li>Ran the relationships with the outsourced call centre and other third-party vendors</li>
+        <li>Product manager for claims: shipped in under two months after a six-month stall, then owned further features, often steering the insurance partner toward what was worth building</li>
+        <li>Product manager for LLM and AI automation: built &amp; shipped an AI chatbot (later adopted in 3 more markets) and an email automation handling 60% of all inbound emails</li>
+        <li>Doubled active contracts by diagnosing and fixing the root cause of a sales-funnel drop-off, then surveyed hundreds of stuck customers to improve conversion further</li>
+        <li>Built the online claims journey, then took it further: found only 25% of claims came through it, so convinced Signal Iduna to build a redirect - lifting it to 60% and cutting manual entry</li>
+        <li>Spotted that the company had no structured project tracking and introduced a system, later adopted across every country launch</li>
+        <li>Led high-risk repricing of thousands of live policies, designing everything the engineers built, the ops team ran, and customers received - 3.6% revenue increase on the product</li>
+        <li>Challenged a leadership decision on claims settlements by independently gathering data and modelling the impact - reversed it, and initiated the ML-based framework that replaced it</li>
+      </ul>
+    </div>
   </div>
-  <p class="mobile-note">Tap "Open in new tab" to read the CV, or download it.</p>
+
+  <div class="entry">
+    <div class="when">2022 – 2023</div>
+    <div class="what">
+      <h3>Consulting Projects, Part-time</h3>
+      <div class="meta">London, United Kingdom</div>
+      <ul>
+        <li>Project lead - growth strategy for food delivery startup; Consultant - B2C GTM strategy for fashion brand</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="when">2021 – 2022</div>
+    <div class="what">
+      <h3>Invescom Corporate Finance</h3>
+      <div class="meta">Budapest, Hungary</div>
+      <p class="title">Analyst &amp; Intern, Investment Banking (Mergers &amp; Acquisitions)</p>
+      <ul>
+        <li>Performed in-depth analyses on 10+ client companies - covering market dynamics, financials, competitive landscape, and strategy - and synthesised findings into deal materials and investment presentations for prospective buyers</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="when">2022 – 2023</div>
+    <div class="what">
+      <h3>London Business School</h3>
+      <div class="meta">London, United Kingdom</div>
+      <p class="title">Master’s in Management</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="when">2018 – 2022</div>
+    <div class="what">
+      <h3>Corvinus University of Budapest</h3>
+      <div class="meta">Budapest, Hungary</div>
+      <p class="title">BSc in Economics, Grade: 1st Class &middot; Focus: Statistics &amp; Data Science</p>
+      <p class="note">Academic Scholarship (top 5% academic performance), Teaching Assistant - Faculty of Statistics</p>
+    </div>
+  </div>
+
+  <h2>Projects</h2>
+
+  <dl class="rows">
+    <dt>Job pipeline</dt>
+    <dd>Scheduled tool that automatically scrapes, filters, enriches and LLM-scores job postings</dd>
+    <dt>Voice capture</dt>
+    <dd>Two dictation-based Gemini API tools: a spreadsheet for health/habit analysis, and brain dumps split into organised lists to come back to later</dd>
+    <dt>Movie finder</dt>
+    <dd>Helps decide what to watch tonight: all streaming services in Hungary, filterable, sortable<br><a href="https://domin7k13.github.io/movies">domin7k13.github.io/movies</a></dd>
+  </dl>
+
+  <h2>Skills, additional information</h2>
+
+  <dl class="rows">
+    <dt>Toolkit</dt>
+    <dd>AI &amp; automation (Claude Code, APIs, Make.com, Google Apps Script), SQL, Kibana (operational dashboards), YouTrack (Jira equivalent), Notion, Excel &amp; Google Sheets, PowerPoint</dd>
+    <dt>Languages</dt>
+    <dd>English (bilingual, C2), Hungarian (native)</dd>
+  </dl>
 </main>
+<footer><a href="Dominik_Czirjak_CV.pdf" download>Download as PDF</a></footer>
 </body>
 </html>
